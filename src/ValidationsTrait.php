@@ -2,12 +2,7 @@
 
 namespace Systemson\ModelValidations;
 
-use Illuminate\Database\Eloquent\Model as LaravelModel;
-use Illuminate\Support\Facades\Route;
-use Collective\Html\Eloquent\FormAccessible;
-use Illuminate\Http\Request;
-use Form;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @todo Split create and update validations.
@@ -16,17 +11,13 @@ trait ValidationsTrait
 {
     public static function boot()
     {
-        if (!isset($this->validations)) {
-            throw new \Exception(sprintf('Declaration of validations for [%s] model is mandatory', get_class($this)));
-        }
-
         parent::boot();
 
-        self::creating(function(LaravelModel $model){
+        self::creating(function(Model $model){
             $model->validate();
         });
 
-        self::updating(function(LaravelModel $model){
+        self::updating(function(Model $model){
             $model->validate();
         });
     }
