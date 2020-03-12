@@ -3,6 +3,7 @@
 namespace Systemson\ModelValidations;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @todo Split create and update validations.
