@@ -1,6 +1,6 @@
 <?php
 
-namespace Systemson\Blankboard\ModelValidations;
+namespace Systemson\ModelValidations;
 
 use Illuminate\Database\Eloquent\Model as LaravelModel;
 use Illuminate\Support\Facades\Route;

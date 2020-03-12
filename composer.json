@@ -1,6 +1,6 @@
 {
     "name": "systemson/laravel-model-validations",
-    "description": "Base project for laravel develops",
+    "description": "Add validations to Eloquent models",
     "type": "library",
     "authors": [
         {
@@ -12,7 +12,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Systemson\\Model\\": "src/"
+            "Systemson\\ModelValidations\\": "src/"
         }
     },
     "require": {
