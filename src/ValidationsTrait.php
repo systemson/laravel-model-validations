@@ -14,20 +14,20 @@ trait ValidationsTrait
     {
         parent::boot();
 
-        self::creating(function(Model $model){
+        self::creating(function (Model $model) {
             $model->validate();
         });
 
-        self::updating(function(Model $model){
+        self::updating(function (Model $model) {
             $model->validate();
         });
     }
 
     public function validate()
     {
-    	if (empty($this->getValidations())) {
-    		return true;
-    	}
+        if (empty($this->getValidations())) {
+            return true;
+        }
 
         Validator::make(
             $this->getAttributes(),
