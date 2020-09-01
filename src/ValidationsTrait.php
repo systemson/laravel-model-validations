@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * @todo Split create and update validations.
+ *
  */
 trait ValidationsTrait
 {
@@ -39,23 +39,15 @@ trait ValidationsTrait
 
     public function getValidations()
     {
-        if (empty($this->validations) || !$this->exists) {
-            return $this->validations;
+        if (!$this->exists && method_exists($this, 'getCreateValidations')) {
+            return $this->getCreateValidations();
         }
 
-        return array_map(function ($rule) {
-            if (\Str::contains($rule, ['unique'])) {
-                preg_match("/(?<=unique:)(.*?)(?=\|)/", $rule, $match);
-                $search = end($match);
 
-                $id = $this->{$this->primaryKey};
+        if (method_exists($this, 'getUpdateValidations')) {
+            return $this->getUpdateValidations();
+        }
 
-                $replace = "{$search},{$id},{$this->primaryKey}";
-
-                $rule = str_replace($search, $replace, $rule);
-            }
-
-            return $rule;
-        }, $this->validations);
+        return $this->validations = [];
     }
 }
