@@ -48,6 +48,6 @@ trait ValidationsTrait
             return $this->getUpdateValidations();
         }
 
-        return $this->validations = [];
+        return $this->validations ?? [];
     }
 }
